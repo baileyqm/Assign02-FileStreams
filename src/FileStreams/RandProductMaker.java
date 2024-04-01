@@ -174,6 +174,11 @@ public class RandProductMaker extends JFrame {
                 }
                 count = productList.size();
                 counterLbl.setText("Item Counter: " + count);
+
+                itemNumFld.setText("");
+                itemNameFld.setText("");
+                itemDescFld.setText("");
+                itemCostFld.setText("");
             } else{
                  JOptionPane.showMessageDialog(addItemPnl, "One or more field(s) are blank!", "Uh-Oh! Blank Field Alert", JOptionPane.ERROR_MESSAGE);
             }
