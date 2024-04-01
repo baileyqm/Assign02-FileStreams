@@ -134,10 +134,10 @@ public class RandProductMaker extends JFrame {
 
         itemCostLbl = new JLabel("Cost (9 Character Max):");
         itemCostLbl.setHorizontalAlignment(SwingConstants.TRAILING);
-        itemCostFld = new JTextField(7);
+        itemCostFld = new JTextField();
         itemCostFld.addKeyListener(new KeyAdapter() {
             public void keyTyped(KeyEvent e) {
-                if (itemDescFld.getText().length() >= 9) // limit textfield to 3 characters
+                if (itemCostFld.getText().length() >= 9) // limit textfield to 3 characters
                     e.consume();
             }
         });
@@ -153,14 +153,14 @@ public class RandProductMaker extends JFrame {
         JButton quitBtn = new JButton("Quit");
 
         addBtn.addActionListener(e ->{
-            if(itemNumFld.getText().length() > 0 && itemNameFld.getText().length() > 0 && itemDescFld.getText().length() > 0){
-                newItemID = String.format("%-6s", itemNumFld.getText());
-                newItemName = String.format("%-35s", itemNameFld.getText());
-                newItemDesc = String.format("%-75s", itemDescFld.getText());
-                newItemCost = String.format("%-9s", itemCostFld.getText());
+            if(itemNumFld.getText().length() > 0 && itemNameFld.getText().length() > 0 && itemDescFld.getText().length() > 0 && itemCostFld.getText().length() > 0){
+                newItemID = itemNumFld.getText();
+                newItemName = itemNameFld.getText();
+                newItemDesc = itemDescFld.getText();
+                newItemCost =  itemCostFld.getText();
 
 
-                Product currentProd = new Product(newItemID,newItemName,newItemDesc,90);
+                Product currentProd = new Product(newItemID,newItemName,newItemDesc, Double.valueOf(newItemCost));
                 productList.add(currentProd);
 
 
