@@ -37,7 +37,6 @@ public class RandProductSearch extends JFrame {
             for(Product k : productList){
                 k.setName(k.getName().trim());
                 k.setDescription(k.getDescription().trim());
-                System.out.println(k);
             }
         }
         catch (ClassNotFoundException p)
@@ -84,19 +83,22 @@ public class RandProductSearch extends JFrame {
         searchFld.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e){
+
                 displayArea.setText(String.format("%-35s%-75s%-9s","Name","Description","Price") + "\n"+String.format("%-119s","=========================================================================================================================================\n"));
+
                 if(e.getKeyCode() == 8 && !searchStr.isEmpty()){
                     searchStr = searchStr.substring(0,searchStr.length()-1);
                 } else if(e.getKeyCode() != 8) {
                     searchStr += e.getKeyChar();
                 }
-                System.out.println(searchStr);
+
                 for(Product p: productList){
                     if(p.getName().toLowerCase().contains(searchStr.toLowerCase()) && !searchStr.isBlank()){
                         //displayArea.append(p.getName()+"\t"+p.getDescription()+"\t$"+p.getCost()+"\n");
                         displayArea.append(String.format("%-35s%-76s%-9.2f",p.getName(),p.getDescription(),p.getCost())+"\n");
                     }
                 }
+
             }
             });
 
@@ -105,6 +107,7 @@ public class RandProductSearch extends JFrame {
         displayPnl = new JPanel(new GridLayout(1,1));
         displayArea.setFont(new Font("Courier New", Font.PLAIN, 14));
         displayArea.setEditable(false);
+        displayArea.setMargin(new Insets(7,5,0,0));
         displayArea.setText(String.format("%-35s%-75s%-9s","Name","Description","Price") + "\n"+String.format("%-119s","=========================================================================================================================================\n"));
 
 
